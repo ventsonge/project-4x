@@ -13,9 +13,9 @@
 This document presents the architecture for a new photo-based communication platform designed to facilitate collaboration between mechanical engineers, procurement teams, and factory workers in large manufacturing companies (500+ employees). The platform enables real-time photo annotation and threaded discussions to address quality issues and streamline decision-making processes.
 
 **Key Success Metrics:**
-- Time-to-market: 3-4 months for MVP
-- Support 10,000+ concurrent users
-- 99.9% uptime SLA
+- Demonstrate platform viability and user value quickly
+- Support 10,000+ concurrent users at scale
+- 99.9% uptime SLA for manufacturing operations
 - Sub-200ms API response times
 
 ---
@@ -162,10 +162,12 @@ This document presents the architecture for a new photo-based communication plat
 - Reduces complexity while enabling scalability for specific components
 
 **Trade-offs:**
-- ✅ Faster initial development using familiar Rails patterns
-- ✅ Microservices for performance-critical real-time features
-- ❌ Increased deployment complexity
-- ❌ Data consistency challenges across services
+- ✅ Leverages existing CADDi Rails expertise for rapid development
+- ✅ Microservices enable independent scaling of performance-critical components
+- ✅ Allows different teams to work in parallel on different services
+- ❌ Increased deployment and operational complexity
+- ❌ Data consistency challenges across service boundaries
+- ❌ Requires more sophisticated monitoring and debugging
 
 ### 4.2 Database Strategy
 
@@ -289,32 +291,57 @@ This document presents the architecture for a new photo-based communication plat
 
 ---
 
-## 6. Implementation Roadmap
+## 6. Implementation Strategy & Resource Estimation
 
-### Phase 1: MVP (8 weeks)
+### 6.1 Development Approach: Value-Driven Incremental Delivery
+
+**Core Philosophy**: Prioritize features that demonstrate immediate user value while building foundational architecture for long-term scalability.
+
+### 6.2 Phased Development Plan
+
+**Phase 1: Core MVP (10-12 weeks)**
+- User authentication and role management
 - Basic photo upload and viewing
-- Simple circle annotations
-- Basic commenting system
-- User authentication
+- Simple circle annotations with basic commenting
+- Essential security and compliance features
 
-### Phase 2: Enhanced Features (4 weeks)
-- Real-time collaboration
-- Advanced annotation tools
-- Mobile application
+**Phase 2: Collaboration Features (6-8 weeks)**
+- Real-time annotation updates
+- Threaded discussions
 - Notification system
+- Mobile-responsive interface
 
-### Phase 3: Enterprise Features (4 weeks)
-- Advanced search and filtering
-- Analytics dashboard
+**Phase 3: Enterprise Enhancement (8-10 weeks)**
+- Advanced annotation tools (shapes, text, arrows)
+- Search and filtering capabilities
+- Analytics dashboard for managers
 - API for third-party integrations
-- Advanced security features
 
-**Resource Requirements:**
-- 1 Technical Lead
-- 2 Frontend Engineers (React/TypeScript)
-- 2 Backend Engineers (Rails/TypeScript)
-- 1 DevOps Engineer
+### 6.3 Resource Requirements Analysis
+
+**Minimum Viable Team (Phase 1):**
+- 1 Technical Lead/Architect
+- 2 Frontend Engineers (React/TypeScript expertise)
+- 2 Backend Engineers (Rails + Node.js experience)
+- 1 DevOps Engineer (GCP/Kubernetes)
 - 1 QA Engineer
+- **Total: 7 engineers**
+
+**Optimal Team for Parallel Development:**
+- 1 Technical Lead/Architect
+- 3 Frontend Engineers (Web + Mobile)
+- 3 Backend Engineers (2 Rails, 1 Node.js specialist)
+- 2 DevOps Engineers (Infrastructure + Security)
+- 2 QA Engineers (Manual + Automation)
+- 1 UX Designer (Manufacturing workflow expertise)
+- **Total: 12 engineers + 1 designer**
+
+**Specialized Skills Needed:**
+- **Critical**: Rails expertise (existing CADDi strength)
+- **Critical**: TypeScript/React experience
+- **Important**: WebSocket/real-time systems knowledge
+- **Important**: Image processing and optimization
+- **Nice-to-have**: Manufacturing domain knowledge
 
 ---
 
